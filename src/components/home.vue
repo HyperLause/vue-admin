@@ -76,6 +76,5 @@
     bottom: 0px;
     left: 230px;
     overflow-y: scroll;
-    padding: 20px;
   }
 </style>

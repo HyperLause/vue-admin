@@ -5,7 +5,6 @@
 
   	{{ $route.path }}
   </div>
-  	}
 </template>
 
 <script>
@@ -13,5 +12,5 @@
 </script>
 
 <style>
-	
+	.module{background:#F90;}
 </style>
