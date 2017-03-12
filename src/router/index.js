@@ -5,6 +5,7 @@ import home from '@/components/home'
 import dashboard from '@/components/dashboard'
 import system from '@/components/system'
 import login from '@/components/login'
+import sidebar from '@/components/sidebar'
 
 Vue.use(Router)
 
@@ -15,8 +16,22 @@ export default new Router({
 		name: 'home',
 		component: home,
 	    children: [
-	        { path: '/', components:{default:dashboard,sidebar:system}, name: 'dashboard' },
-	        { path: '/system', components: {default:system,sidebar:dashboard}, name: 'system' },
+	        {
+	        	path: '/', 
+	        	components : {
+	        		default:dashboard,
+	        		sidebar:sidebar
+	        	}, 
+	        	name: 'dashboard' 
+	        },
+	        { 
+	        	path: '/system', 
+	        	components: {
+	        		default:dashboard,
+	        		sidebar:system
+	        	}, 
+	        	name: 'system' 
+	        },
 	    ]
     },
     {
