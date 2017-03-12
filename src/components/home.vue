@@ -6,8 +6,10 @@
         Penny Admin by Vue
       </el-col>
       <el-col :span="16" class="pn-btn-group">
-        <router-link :to="{path:'/'}">信息管理</router-link>
-        <router-link :to="{path:'/system'}">系统设置</router-link>
+        <el-menu theme="dark" class="pn-btn-top" mode="horizontal" router>
+          <el-menu-item index="/">信息管理</el-menu-item>
+          <el-menu-item index="/system">系统设置</el-menu-item>
+        </el-menu>
       </el-col>
     </el-col>
     <el-col :span="24" class="main">
@@ -46,8 +48,8 @@
     text-indent:1em;
   }
 
-  .container .header .pn-btn-group{
-    text-align: right;
+  .container .header .pn-btn-top{
+    float: right;
   }
 
   .pn-btn-group a{

@@ -6,6 +6,8 @@ import dashboard from '@/components/dashboard'
 import system from '@/components/system'
 import login from '@/components/login'
 import sidebar from '@/components/sidebar'
+import module from '@/components/module'
+import mainbar from '@/components/mainbar'
 
 Vue.use(Router)
 
@@ -31,6 +33,22 @@ export default new Router({
 	        		sidebar:system
 	        	}, 
 	        	name: 'system' 
+	        },
+	        {
+	        	path: '/module/:subject', 
+	        	components : {
+	        		default:module,
+	        		sidebar:sidebar
+	        	}, 
+	        	name: 'module' 
+	        },
+	        {
+	        	path: '/system/:subject', 
+	        	components : {
+	        		default:mainbar,
+	        		sidebar:system
+	        	}, 
+	        	name: 'mainbar' 
 	        },
 	    ]
     },
