@@ -1,21 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import test from '@/components/test'
+
+import home from '@/components/home'
+import dashboard from '@/components/dashboard'
+import system from '@/components/system'
+import login from '@/components/login'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Hello',
-      component: Hello
+		path: '/',
+		name: 'home',
+		component: home,
+	    children: [
+	        { path: '/', components:{default:dashboard,sidebar:system}, name: 'dashboard' },
+	        { path: '/system', components: {default:system,sidebar:dashboard}, name: 'system' },
+	    ]
     },
     {
-    	path:'/test',
-    	name:'test',
-    	component:test
-    }
+    	path:'/login',
+    	name:'login',
+    	component:login
+    },
+
   ]
 })
