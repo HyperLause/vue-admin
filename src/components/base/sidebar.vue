@@ -1,5 +1,5 @@
 <template>
-  	<el-menu theme="dark" router unique-opened=“true” :default-active="$route.path">
+    <el-menu theme="dark" router unique-opened=“true” :default-active="$route.path">
 
         <el-submenu v-for="item in items" :index="item.index">
             <template slot="title">{{ item.title }}</template>
@@ -14,49 +14,50 @@
 
 
 
-
-
-
 <script>
   export default {
     data() {
-      return {
-        aaa : 'hello',
-        items : [
-          {
-            index : 1,
-            title : '内容管理',
-            children : [
-              {
-                path : '/base/news',
-                title : '新闻管理'
-              },
-              {
-                path : '/base/goods',
-                title : '商品管理'
-              }
+        return {
+            aaa : 'hello',
+            items : [
+                {
+                    index : 1,
+                    title : '内容管理',
+                    children : [
+                        {
+                            path : '/base/news',
+                            title : '新闻管理'
+                        },
+                        {
+                            path : '/base/goods',
+                            title : '商品管理'
+                        }
+                    ]
+                },
+                {
+                    index : 2,
+                    title : '微信管理',
+                    children : [
+                        {
+                            path : '/base/wxconfig',
+                            title : '微信配置'
+                        },
+                        {
+                            path : '/base/wxuser',
+                            title : '微信用户管理'
+                        }
+                    ]
+                }
             ]
-          },
-          {
-            index : 2,
-            title : '微信管理',
-            children : [
-              {
-                path : '/base/wxconfig',
-                title : '微信配置'
-              },
-              {
-                path : '/base/wxuser',
-                title : '微信用户管理'
-              }
-            ]
-          }
-        ]
-        
-      };
+
+        }
     }
-  }
+}
 </script>
+
+
+
+
 
 <style>
 	

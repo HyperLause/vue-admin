@@ -1,16 +1,23 @@
 <template>
-  <div class="module">
-  	{{ $route.params.subject }}
+	<div class="module">
+		{{ $route.params.subject }}
 
 
-  	{{ $route.path }}
-  </div>
-  	}
+		{{ $route.path }}
+	</div>
 </template>
+
+
+
+
 
 <script>
 
 </script>
+
+
+
+
 
 <style>
 	
