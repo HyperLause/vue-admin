@@ -1,6 +1,6 @@
 
-let base = 'http://tp5.liu/';
+let base = 'http://tp5.sseoo.com/';
 export default{
-	menu : base,
-	user : base + 'user.php'
+	menu : base + 'api/menu',
+	user : base + 'api/user'
 }
