@@ -11,6 +11,6 @@
 
 </script>
 
-<style>
+<style scoped>
 	.module{background:#F90;}
 </style>

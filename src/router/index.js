@@ -1,61 +1,73 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+
+import login from '@/components/login'
 import home from '@/components/home'
 import dashboard from '@/components/dashboard'
-import system from '@/components/system'
-import login from '@/components/login'
-import sidebar from '@/components/sidebar'
-import module from '@/components/module'
-import mainbar from '@/components/mainbar'
+
+
+import base_sidebar from '@/components/base/sidebar'
+import base_module from '@/components/base/module'
+
+import system_sidebar from '@/components/system/sidebar'
+import system_module from '@/components/system/module'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-		path: '/',
-		name: 'home',
+    	path:'/',
+    	name:'login',
+    	component:login
+    },
+    {
+		path: '/base',
+		name: 'base',
 		component: home,
 	    children: [
 	        {
-	        	path: '/', 
+	        	path: '/base', 
 	        	components : {
 	        		default:dashboard,
-	        		sidebar:sidebar
+	        		sidebar:base_sidebar
 	        	}, 
-	        	name: 'dashboard' 
-	        },
-	        { 
-	        	path: '/system', 
-	        	components: {
-	        		default:dashboard,
-	        		sidebar:system
-	        	}, 
-	        	name: 'system' 
+	        	name: 'base_dashboard' 
 	        },
 	        {
-	        	path: '/module/:subject', 
+	        	path: '/base/:subject', 
 	        	components : {
-	        		default:module,
-	        		sidebar:sidebar
+	        		default:base_module,
+	        		sidebar:base_sidebar
 	        	}, 
-	        	name: 'module' 
+	        	name: 'base_module' 
+	        },
+	    ]
+    }, 
+
+    {
+		path: '/system',
+		name: 'system',
+		component: home,
+	    children: [
+	        {
+	        	path: '/system', 
+	        	components : {
+	        		default:dashboard,
+	        		sidebar:system_sidebar
+	        	}, 
+	        	name: 'system_dashboard' 
 	        },
 	        {
 	        	path: '/system/:subject', 
 	        	components : {
-	        		default:mainbar,
-	        		sidebar:system
+	        		default:system_module,
+	        		sidebar:system_sidebar
 	        	}, 
-	        	name: 'mainbar' 
+	        	name: 'system_module' 
 	        },
 	    ]
-    },
-    {
-    	path:'/login',
-    	name:'login',
-    	component:login
     },
 
   ]
