@@ -1,17 +1,10 @@
 <template>
-  	<el-menu default-active="2" theme="dark" router unique-opened=“true” :default-active="$route.path">
+  	<el-menu theme="dark" router unique-opened=“true” :default-active="$route.path">
 
-      <el-submenu index="1">
-            <template slot="title">内容管理</template>
-	        <el-menu-item index="/base/news">新闻管理</el-menu-item>
-	        <el-menu-item index="/base/goods">商品管理</el-menu-item>
-      </el-submenu>
-
-      <el-submenu index="2">
-            <template slot="title">微信管理</template>
-            <el-menu-item index="/base/wxconfig">微信参数设置</el-menu-item>
-            <el-menu-item index="/base/wxuser">微信用户</el-menu-item>
-      </el-submenu>
+        <el-submenu v-for="item in items" :index="item.index">
+            <template slot="title">{{ item.title }}</template>
+            <el-menu-item v-for="child in item.children" :index="child.path">{{ child.title }}</el-menu-item>
+        </el-submenu>
 
     </el-menu>
 </template>
@@ -25,7 +18,44 @@
 
 
 <script>
-
+  export default {
+    data() {
+      return {
+        aaa : 'hello',
+        items : [
+          {
+            index : 1,
+            title : '内容管理',
+            children : [
+              {
+                path : '/base/news',
+                title : '新闻管理'
+              },
+              {
+                path : '/base/goods',
+                title : '商品管理'
+              }
+            ]
+          },
+          {
+            index : 2,
+            title : '微信管理',
+            children : [
+              {
+                path : '/base/wxconfig',
+                title : '微信配置'
+              },
+              {
+                path : '/base/wxuser',
+                title : '微信用户管理'
+              }
+            ]
+          }
+        ]
+        
+      };
+    }
+  }
 </script>
 
 <style>

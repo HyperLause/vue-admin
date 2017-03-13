@@ -1,18 +1,43 @@
 <template>
   	<el-menu default-active="2" theme="dark" router unique-opened=“true” :default-active="$route.path">
-
-      <el-submenu index="1">
-            <template slot="title">系统设置</template>
-	        <el-menu-item index="/system/sites">网站参数配置</el-menu-item>
-	        <el-menu-item index="/system/admin">高级账户管理</el-menu-item>
-      </el-submenu>
-
+	        <el-menu-item v-for="item in items" :index="item.path">{{ item.title }}</el-menu-item>
     </el-menu>
 </template>
 
-<script>
 
+
+
+<script>
+export default{
+	data(){
+		return{
+			items : [
+				{
+					path:'/system/sites',
+					title:'网站参数配置',
+				},
+				{
+					path:'/system/group',
+					title:'权限组管理',
+				},
+				{
+					path:'/system/admin',
+					title:'高级账户管理',
+				}
+			]
+		}
+	}
+}
 </script>
+
+
+
+
+
+
+
+
+
 
 <style>
 	
