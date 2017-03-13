@@ -1,5 +1,5 @@
 <template>
-    <el-menu theme="dark" router unique-opened=“true” :default-active="$route.path">
+    <el-menu theme="dark" router unique-opened :default-active="$route.path">
 
         <el-submenu v-for="item in items" :index="item.index">
             <template slot="title">{{ item.title }}</template>
@@ -15,11 +15,35 @@
 
 
 <script>
-  export default {
+export default {
     data() {
         return {
-            aaa : 'hello',
-            items : [
+            items : []
+        }
+    },
+    mounted() {
+        this.getItems();
+    },
+    methods : {
+        getItems() {
+            this.$http.jsonp('http://tp5.liu/', {}, {
+                emulateJSON: true,
+                headers: {}
+            }).then(function(response) {
+                // 这里是处理正确的回调
+                this.items = response.data
+            }, function(response) {
+                // 这里是处理错误的回调
+                console.log(response)
+            });
+        }
+    }
+}
+
+/*
+
+    items的数据格式
+            [
                 {
                     index : 1,
                     title : '内容管理',
@@ -49,10 +73,7 @@
                     ]
                 }
             ]
-
-        }
-    }
-}
+*/
 </script>
 
 

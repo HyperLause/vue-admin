@@ -1,5 +1,5 @@
 <template>
-  	<el-menu default-active="2" theme="dark" router unique-opened=“true” :default-active="$route.path">
+  	<el-menu theme="dark" router unique-opened :default-active="$route.path">
 	        <el-menu-item v-for="item in items" :index="item.path">{{ item.title }}</el-menu-item>
     </el-menu>
 </template>
