@@ -8,6 +8,12 @@ import router from './router'
 import VueResource from 'vue-resource'
 
 
+//统一接口地址设置
+import api from './api';
+//将api 赋值给全局 属性
+Vue.prototype.api = api;
+
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(VueResource)

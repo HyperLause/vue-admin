@@ -26,7 +26,8 @@ export default {
     },
     methods : {
         getItems() {
-            this.$http.jsonp('http://tp5.liu/', {}, {
+            //console.log(this.api.menu)
+            this.$http.jsonp(this.api.menu, {}, {
                 emulateJSON: true,
                 headers: {}
             }).then(function(response) {
