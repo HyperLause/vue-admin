@@ -1,12 +1,10 @@
 <template>
-    <el-menu theme="dark" router unique-opened :default-active="$route.path">
-
-        <el-submenu v-for="item in items" :index="item.index">
-            <template slot="title">{{ item.title }}</template>
-            <el-menu-item v-for="child in item.children" :index="child.path">{{ child.title }}</el-menu-item>
-        </el-submenu>
-
-    </el-menu>
+  <el-menu theme="dark" router unique-opened :default-active="$route.path">
+    <el-submenu v-for="item in items" :index="item.index">
+      <template slot="title">{{ item.title }}</template>
+      <el-menu-item v-for="child in item.children" :index="child.path">{{ child.title }}</el-menu-item>
+    </el-submenu>
+  </el-menu>
 </template>
 
 
@@ -16,29 +14,29 @@
 
 <script>
 export default {
-    data() {
-        return {
-            items : []
-        }
-    },
-    mounted() {
-        this.getItems();
-    },
-    methods : {
-        getItems() {
-            //console.log(this.api.menu)
-            this.$http.jsonp(this.api.menu, {}, {
-                emulateJSON: true,
-                headers: {}
-            }).then(function(response) {
-                // 这里是处理正确的回调
-                this.items = response.data
-            }, function(response) {
-                // 这里是处理错误的回调
-                console.log(response)
-            });
-        }
+  data() {
+    return {
+      items : []
     }
+  },
+  mounted() {
+    this.getItems();
+  },
+  methods : {
+    getItems() {
+      //console.log(this.api.menu)
+      this.$http.jsonp(this.api.menu, {}, {
+        emulateJSON: true,
+        headers: {}
+      }).then(function(response) {
+        // 这里是处理正确的回调
+        this.items = response.data
+      }, function(response) {
+        // 这里是处理错误的回调
+        console.log(response)
+      });
+    }
+  }
 }
 
 /*
@@ -82,5 +80,5 @@ export default {
 
 
 <style>
-	
+
 </style>

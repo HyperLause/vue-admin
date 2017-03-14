@@ -1,9 +1,7 @@
 <template>
 	<div class="module">
-	  	{{ $route.params.subject }}
-
-
-	  	{{ $route.path }}
+  	{{ $route.params.subject }}
+  	{{ $route.path }}
 	</div>
 </template>
 
