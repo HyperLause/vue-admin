@@ -17,6 +17,10 @@ export default{
 					title:'表格',
 				},
 				{
+					path:'/system/form',
+					title:'表单',
+				},
+				{
 					path:'/system/sites',
 					title:'网站参数配置',
 				},

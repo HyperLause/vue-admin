@@ -11,6 +11,8 @@ import base_sidebar from '@/components/base/sidebar'
 import base_module from '@/components/base/module'
 
 import system_sidebar from '@/components/system/sidebar'
+import system_table from '@/components/system/table'
+import system_form from '@/components/system/form'
 import system_module from '@/components/system/module'
 
 Vue.use(Router)
@@ -22,29 +24,30 @@ export default new Router({
     	name:'login',
     	component:login
     },
+
     {
 		path: '/base',
 		name: 'base',
 		component: home,
 	    children: [
 	        {
-	        	path: '/base', 
+	        	path: '/base',
 	        	components : {
 	        		default:dashboard,
 	        		sidebar:base_sidebar
-	        	}, 
-	        	name: 'base_dashboard' 
+	        	},
+	        	name: 'base_dashboard'
 	        },
 	        {
-	        	path: '/base/:subject', 
+	        	path: '/base/:subject',
 	        	components : {
 	        		default:base_module,
 	        		sidebar:base_sidebar
-	        	}, 
-	        	name: 'base_module' 
+	        	},
+	        	name: 'base_module'
 	        },
 	    ]
-    }, 
+    },
 
     {
 		path: '/system',
@@ -52,20 +55,36 @@ export default new Router({
 		component: home,
 	    children: [
 	        {
-	        	path: '/system', 
+	        	path: '/system',
 	        	components : {
 	        		default:dashboard,
 	        		sidebar:system_sidebar
-	        	}, 
-	        	name: 'system_dashboard' 
+	        	},
+	        	name: 'system_dashboard'
 	        },
 	        {
-	        	path: '/system/:subject', 
+	        	path: '/system/table',
+	        	components : {
+	        		default:system_table,
+	        		sidebar:system_sidebar
+	        	},
+	        	name: 'system_table'
+	        },
+	        {
+	        	path: '/system/form',
+	        	components : {
+	        		default:system_form,
+	        		sidebar:system_sidebar
+	        	},
+	        	name: 'system_form'
+	        },
+	        {
+	        	path: '/system/:subject',
 	        	components : {
 	        		default:system_module,
 	        		sidebar:system_sidebar
-	        	}, 
-	        	name: 'system_module' 
+	        	},
+	        	name: 'system_module'
 	        },
 	    ]
     },
