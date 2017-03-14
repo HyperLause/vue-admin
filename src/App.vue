@@ -4,8 +4,8 @@
 	</div>
 </template>
 
-<script>
 
+<script>
 export default{
   mounted(){
     this.checkLogin();
@@ -24,8 +24,9 @@ export default{
 		}
   }
 }
-
 </script>
+
+
 
 <style>
 	body {

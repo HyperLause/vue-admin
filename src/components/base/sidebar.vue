@@ -1,6 +1,6 @@
 <template>
   <el-menu theme="dark" router unique-opened :default-active="$route.path">
-    <el-submenu v-for="item in items" :index="item.index">
+    <el-submenu v-for="item in items" :index="item.index" :key="item.index">
       <template slot="title">{{ item.title }}</template>
       <el-menu-item v-for="child in item.children" :index="child.path">{{ child.title }}</el-menu-item>
     </el-submenu>
@@ -21,7 +21,7 @@ export default {
   methods : {
     getItems() {
       //console.log(this.api.menu)
-      this.$http.jsonp(this.api.menu).then(response => {
+      this.$http.get(this.api.menu).then(response => {
         // 这里是处理正确的回调
         this.items = response.data
       }, response => {
