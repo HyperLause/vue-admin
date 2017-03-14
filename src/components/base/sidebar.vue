@@ -8,10 +8,6 @@
 </template>
 
 
-
-
-
-
 <script>
 export default {
   data() {
@@ -25,13 +21,10 @@ export default {
   methods : {
     getItems() {
       //console.log(this.api.menu)
-      this.$http.jsonp(this.api.menu, {}, {
-        emulateJSON: true,
-        headers: {}
-      }).then(function(response) {
+      this.$http.jsonp(this.api.menu).then(response => {
         // 这里是处理正确的回调
         this.items = response.data
-      }, function(response) {
+      }, response => {
         // 这里是处理错误的回调
         console.log(response)
       });
