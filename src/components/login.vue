@@ -32,10 +32,6 @@
         }
       };
     },
-    mounted(){
-      //如果 当前是首页 那么必须是未登录 的
-      this.$utils.checkLogin(this);
-    },
     methods : {
       login(){
         this.$refs.account.validate(valid => {
