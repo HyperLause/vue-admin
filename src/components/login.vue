@@ -50,17 +50,22 @@
               emulateJSON:true
             }).then(response => {
               // 这里是处理正确的回调
-              let result = response.data
-              if(result.code == 200){
+              let res = response.data
+              if(typeof res == 'string'){
+                res = JSON.parse(res);
+              }
+              console.log(typeof res);
+              console.log(res);
+              if(res.code == 200){
                 //登录成功 收到token和 用户id 存储session
-                sessionStorage.setItem('userid', result.result.userid);
-                sessionStorage.setItem('token', result.result.token);
+                sessionStorage.setItem('userid', res.result.userid);
+                sessionStorage.setItem('token', res.result.token);
                 this.$router.push({ path: '/system/table' });
               }else{
                 //登录失败
                 this.$notify({
                   title: '错误',
-                  message: result.result,
+                  message: res.result,
                   type: 'error'
                 });
                 this.loading = false;
