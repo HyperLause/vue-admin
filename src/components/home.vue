@@ -23,7 +23,19 @@
 </template>
 
 <script>
+export default{
+  data(){
+    return {
 
+    }
+  },
+  mounted(){
+    this.$utils.checkLogin(this);
+  },
+  methods : {
+
+  }
+}
 </script>
 
 <style>

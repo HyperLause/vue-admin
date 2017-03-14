@@ -25,50 +25,56 @@
         rules: {
           username: [
             { required: true, message: '请输入账号', trigger: 'blur' },
-            //{ validator: validaePass }
           ],
           password: [
             { required: true, message: '请输入密码', trigger: 'blur' },
-            //{ validator: validaePass2 }
           ]
-        },
-        checked: true
+        }
       };
+    },
+    mounted(){
+      //如果 当前是首页 那么必须是未登录 的
+      this.$utils.checkLogin(this);
     },
     methods : {
       login(){
-        this.loading = true;
-        let userParams = {
-          username : this.account.username,
-          password : this.account.password
-        }
-
-        //登录
-        this.$http.post(this.api.user,userParams,{
-          emulateJSON:true
-        }).then(response => {
-          // 这里是处理正确的回调
-          let result = response.data
-          //console.log(result);
-          if(result.code == 200){
-            //登录成功 收到token和 用户id 存储session
-            this.$router.push({ path: '/system/table' });
-
-          }else{
-            //登录失败
-            this.$notify({
-              title: '错误',
-              message: result.result,
-              type: 'error'
+        this.$refs.account.validate(valid => {
+          if(valid){
+            this.loading = true;
+            let userParams = {
+              username : this.account.username,
+              password : this.account.password
+            }
+            //登录
+            this.$http.post(this.api.user,userParams,{
+              emulateJSON:true
+            }).then(response => {
+              // 这里是处理正确的回调
+              let result = response.data
+              if(result.code == 200){
+                //登录成功 收到token和 用户id 存储session
+                sessionStorage.setItem('userid', result.result.userid);
+                sessionStorage.setItem('token', result.result.token);
+                this.$router.push({ path: '/system/table' });
+              }else{
+                //登录失败
+                this.$notify({
+                  title: '错误',
+                  message: result.result,
+                  type: 'error'
+                });
+                this.loading = false;
+              }
+            }, response => {
+              // 这里是处理错误的回调
+              console.log(response)
+              this.loading = false;
             });
-            this.loading = false;
+          }else{
+            console.log('error submit!!');
+            return false;
           }
-        }, response => {
-          // 这里是处理错误的回调
-          console.log("aaa");
-          console.log(response)
-          this.loading = false;
-        });
+        })
       }
     }
   }

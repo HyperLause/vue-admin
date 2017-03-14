@@ -14,6 +14,11 @@ import api from './api';
 Vue.prototype.api = api;
 
 
+//全局函数
+import utils from './utils';
+Vue.prototype.$utils = utils;
+
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(VueResource)
@@ -26,7 +31,3 @@ new Vue({
 	template: '<App/>',
 	components: { App }
 })
-
-
-
-
