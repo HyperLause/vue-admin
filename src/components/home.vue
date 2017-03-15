@@ -8,6 +8,7 @@
         <el-menu theme="dark" class="pn-btn-top" mode="horizontal" router>
           <el-menu-item index="/base">基本功能</el-menu-item>
           <el-menu-item index="/system">系统功能</el-menu-item>
+          <el-menu-item @click="logout">退出登录</el-menu-item>
         </el-menu>
       </el-col>
     </el-col>
@@ -23,7 +24,35 @@
 </template>
 
 <script>
+export default{
+  mounted(){
+    this.checkLogin();
+  },
+  methods : {
+		checkLogin(){
+			//如果 未登录 跳转回 首页
+			let userid = sessionStorage.getItem("userid");
+			if(!userid){
+				this.$router.push({path:'/'});
+			}
+		},
+    logout(){
+      this.$confirm('确认退出吗?', '提示', {
+				//type: 'warning'
+			}).then(() => {
+        sessionStorage.removeItem('userid');
+        sessionStorage.removeItem('token');
+        this.$router.push({ path: '/' });
+        this.$message({
+          type: 'success',
+          message: '已成功退出!'
+        });
+			}).catch(() => {
 
+			});
+    }
+  }
+}
 </script>
 
 <style>

@@ -7,22 +7,7 @@
 
 <script>
 export default{
-  mounted(){
-    this.checkLogin();
-  },
-  methods:{
-		checkLogin(){
-			//console.log(path);
-			let path = this.$route.path
-			if(path != '/'){
-				//如果 未登录 跳转回 首页
-				let userid = sessionStorage.getItem("userid");
-				if(!userid){
-					this.$router.push({path:'/'});
-				}
-			}
-		}
-  }
+
 }
 </script>
 

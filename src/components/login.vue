@@ -57,6 +57,10 @@
                 sessionStorage.setItem('userid', res.result.userid);
                 sessionStorage.setItem('token', res.result.token);
                 this.$router.push({ path: '/system/table' });
+                this.$message({
+                  type: 'success',
+                  message: '已成功登录!'
+                });
               }else{
                 //登录失败
                 this.$notify({
