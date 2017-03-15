@@ -8,7 +8,7 @@
         <el-menu theme="dark" class="pn-btn-top" mode="horizontal" router>
           <el-menu-item index="/base">基本功能</el-menu-item>
           <el-menu-item index="/system">系统功能</el-menu-item>
-          <el-menu-item @click="logout">退出登录</el-menu-item>
+          <el-menu-item index="" @click="logout">退出登录</el-menu-item>
         </el-menu>
       </el-col>
     </el-col>
