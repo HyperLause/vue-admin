@@ -6,4 +6,5 @@ let base = (host == 'localhost') ? 'http://tp5.liu/index.php/' : 'http://tp5.sse
 export default{
 	menu : base + 'api/menu',
 	user : base + 'api/user',
+	table : base + 'api/table',
 }

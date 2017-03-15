@@ -1,5 +1,5 @@
 <template>
-	<el-table :data="tableData3" stripe border style="width: 100%" @selection-change="handleSelectionChange">
+	<el-table :data="datalist" stripe border style="width: 100%" v-loading="loading" element-loading-text="拼命加载中">
     <el-table-column type="selection" width="55"></el-table-column>
     <el-table-column prop="date" label="日期" width="120" sortable></el-table-column>
     <el-table-column prop="name" label="姓名" width="120" sortable></el-table-column>
@@ -13,106 +13,25 @@
 export default {
 	data() {
 		return {
-			tableData3: [{
-				date: '2016-05-03',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-02',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-04',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-01',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-08',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-06',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-04',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-01',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-08',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-06',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-04',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-01',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-08',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-06',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-04',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-01',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-08',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-06',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-04',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-01',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-08',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-06',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}, {
-				date: '2016-05-07',
-				name: '王小虎',
-				address: '上海市普陀区金沙江路 1518 弄'
-			}],
-			multipleSelection: []
+			loading : true,
+			datalist: []
 		}
 	},
-	methods: {
-		handleSelectionChange(val) {
-			this.multipleSelection = val;
-		}
+	mounted(){
+		this.getData()
+	},
+	methods : {
+	    getData() {
+	      //console.log(this.api.menu)
+	      this.$http.get(this.api.table).then(response => {
+	        // 这里是处理正确的回调
+	        this.datalist = response.data
+					this.loading = false
+	      }, response => {
+	        // 这里是处理错误的回调
+	        console.log(response)
+	      });
+	    }
 	}
 }
 </script>
