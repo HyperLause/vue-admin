@@ -21,17 +21,14 @@ export default {
 		this.getData()
 	},
 	methods : {
-	    getData() {
-	      //console.log(this.api.menu)
-	      this.$http.get(this.api.table).then(response => {
-	        // 这里是处理正确的回调
-	        this.datalist = response.data
-					this.loading = false
-	      }, response => {
-	        // 这里是处理错误的回调
-	        console.log(response)
-	      });
-	    }
+    getData() {
+      this.$http.get(this.api.table).then(response => {
+        this.datalist = response.data
+				this.loading = false
+      }, response => {
+        console.log(response)
+      });
+    }
 	}
 }
 </script>

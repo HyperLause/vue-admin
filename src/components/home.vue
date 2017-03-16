@@ -32,9 +32,27 @@ export default{
 		checkLogin(){
 			//如果 未登录 跳转回 首页
 			let userid = sessionStorage.getItem("userid");
-			if(!userid){
-				this.$router.push({path:'/'});
-			}
+			let token = sessionStorage.getItem("token");
+
+      //登录
+      this.$http.post(this.api.usertoken,{userid:userid,token:token},{
+        emulateJSON:true
+      }).then(response => {
+        // 这里是处理正确的回调
+        let res = response.data
+        if(res.code != 200){
+          //登录失败
+          this.$notify({
+            title: '错误',
+            message: res.result,
+            type: 'error'
+          });
+          this.$router.push({path:'/'});
+        }
+      }, response => {
+        // 这里是处理错误的回调
+        console.log(response)
+      });
 		},
     logout(){
       this.$confirm('确认退出吗?', '提示', {

@@ -4,7 +4,10 @@ let host = location.hostname
 let base = (host == 'localhost') ? 'http://tp5.liu/index.php/' : 'http://tp5.sseoo.com/'
 //console.log(base);
 export default{
-	menu : base + 'api/menu',
 	user : base + 'api/user',
+	usertoken : base + 'api/user/token',
+
+
+	menu : base + 'api/menu',
 	table : base + 'api/table',
 }
