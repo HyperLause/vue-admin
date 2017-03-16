@@ -47,11 +47,6 @@
             }).then(response => {
               // 这里是处理正确的回调
               let res = response.data
-              if(typeof res == 'string'){
-                res = JSON.parse(res);
-              }
-              console.log(typeof res);
-              console.log(res);
               if(res.code == 200){
                 //登录成功 收到token和 用户id 存储session
                 sessionStorage.setItem('userid', res.result.userid);

@@ -1,8 +1,8 @@
 <template>
   <el-menu theme="dark" router unique-opened :default-active="$route.path">
-    <el-submenu v-for="item in items" :index="item.id" :key="item.id">
+    <el-submenu v-for="item in items" :index="'i'+item.id" :key="item.id">
       <template slot="title">{{ item.label }}</template>
-      <el-menu-item v-for="child in item.children" :index="'/base/'+child.id">{{ child.label }}</el-menu-item>
+      <el-menu-item v-for="child in item.children" :index="'/base/'+child.id" :key="child.id">{{ child.label }}</el-menu-item>
     </el-submenu>
   </el-menu>
 </template>

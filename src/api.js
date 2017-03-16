@@ -9,5 +9,8 @@ export default{
 
 
 	menu : base + 'api/menu',
+	menusave : base + 'api/menu/save',
+	menudelete : base + 'api/menu/delete',
+
 	table : base + 'api/table',
 }
