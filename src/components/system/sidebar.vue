@@ -12,6 +12,10 @@ export default{
 	data() {
 		return {
 			items : [
+        {
+          path:'/system/menu',
+          title:'基本功能菜单管理',
+        },
 				{
 					path:'/system/table',
 					title:'表格',

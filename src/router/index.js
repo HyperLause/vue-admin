@@ -11,6 +11,7 @@ import base_sidebar from '@/components/base/sidebar'
 import base_module from '@/components/base/module'
 
 import system_sidebar from '@/components/system/sidebar'
+import system_menu from '@/components/system/menu'
 import system_table from '@/components/system/table'
 import system_form from '@/components/system/form'
 import system_module from '@/components/system/module'
@@ -61,6 +62,14 @@ export default new Router({
 	        		sidebar:system_sidebar
 	        	},
 	        	name: 'system_dashboard'
+	        },
+	        {
+	        	path: '/system/menu',
+	        	components : {
+	        		default:system_menu,
+	        		sidebar:system_sidebar
+	        	},
+	        	name: 'system_menu'
 	        },
 	        {
 	        	path: '/system/table',
